@@ -1,4 +1,4 @@
-CREATE SCHEMA azdev;
+CREATE SCHEMA IF NOT EXISTS azdev;
 
 CREATE TABLE azdev.users (
     id SERIAL PRIMARY KEY,

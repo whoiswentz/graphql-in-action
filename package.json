@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/whoiswentz/graphql-in-action#readme",
   "dependencies": {
+    "apollo-server-fastify": "^2.22.1",
     "express-graphql": "^0.12.0",
+    "fastify": "^3.14.1",
     "graphql": "^15.5.0"
   },
   "devDependencies": {
