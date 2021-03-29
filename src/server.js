@@ -1,16 +1,16 @@
 const fastify = require('fastify')
+const mercurius = require('mercurius')
+const {printSchema} = require('graphql')
 
-const { ApolloServer } = require('apollo-server-fastify')
+const schema = require('./schema')
 
-const apolloServer = new ApolloServer({
-    // typeDefs,
-    //resolvers,
+const app = fastify()
+app.register(mercurius, {
+    schema,
+    graphiql: 'playground',
 })
-const appServer = fastify()
 
-apolloServer.start().then(() => {
-    appServer.register(apolloServer.createHandler())
-    appServer.listen(3000, () => {
-        console.log('server running')
-    })
+app.listen(3000, () => {
+    console.log('runing')
+    console.log(printSchema(schema))
 })
