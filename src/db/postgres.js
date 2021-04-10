@@ -3,7 +3,12 @@ const { Pool } = require('pg')
 const env = require('../config/env')
 
 async function connect() {
-    const pgPool = new Pool({ connectionString: env.postgreUrl })
+    const pgPool = new Pool({ 
+        host: 'localhost',
+        user: 'postgres',
+        password: 'password',
+        port: 5432
+     })
 
     const client = await pgPool.connect()
     const tableCountResp = await client.query(
@@ -23,8 +28,8 @@ async function connect() {
     });
 
     return {
-        pool: pgPool,
-        close: async () => await pgPool.close()
+        pgPool,
+        pgPoolClose: async () => await pgPool.close()
     }
 }
 

@@ -22,7 +22,8 @@ const Task = new GraphQLObjectType({
         tags: {
             type: new GraphQLNonNull(
                 new GraphQLList(new GraphQLNonNull(GraphQLString))
-            )
+            ),
+            resolve: (source) => source.tags.split(',')
         },
         createdAt: {
             type: new GraphQLNonNull(GraphQLString)
